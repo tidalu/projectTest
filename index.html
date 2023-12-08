@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Hello</title>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .hello-container {
+      text-align: center;
+    }
+
+    .hello-text {
+      font-size: 2em;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .animated {
+      animation: bounce 1s infinite;
+    }
+
+    .flag {
+      font-size: 2em;
+      margin-top: 10px;
+      animation: wave 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-20px);
+      }
+
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes wave {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(20deg);
+      }
+
+      50% {
+        transform: rotate(0deg);
+      }
+
+      75% {
+        transform: rotate(-20deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hello-container">
+    <h1 class="hello-text animated">Hello, Animated World!</h1>
+    <p>This is a real-time animated "Hello" message with a waving flag.</p>
+    <div class="flag">&#x1F6A9;</div>
+  </div>
+
+  <script>
+    // JavaScript for additional interactivity (optional)
+    document.addEventListener('DOMContentLoaded', function () {
+      // You can add more JavaScript logic here if needed
+    });
+
+	  let ws ;
+	  const proto = window.location.protocol === "https" ? 'wss' : 'ws';
+	  ws = new WebSocket(`${proto}://${window.location.host}`);
+
+	  ws.onmessage = (event) => {console.log(event)};
+  </script>
+</body>
+
+</html> 
